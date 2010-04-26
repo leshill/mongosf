@@ -17,10 +17,9 @@
     class Person
       include Mongoid::Document
       field :first_name
-      field :middle_initial
       field :last_name
-      field :birthday, :type => Date
-      field :blood_alcohol_level, :type => Float, :default => 0.0
+      field :arrival_date, :type => Date
+      field :clearance_level, :default => 'basic'
     end
 
 !SLIDE small
@@ -30,17 +29,14 @@
     @@@ ruby
     class Person
       include Mongoid::Document
-      field :first_name
-      field :last_name
-      embeds_one :address
-      embeds_many :phones
+      embeds_many :locations
     end
 
-    class Phone
+    class Location
       include Mongoid::Document
-      field :country_code, :type => Integer, :default => 1
-      field :number
-      embedded_in :person, :inverse_of => :phones
+      field :lat, :type => Float
+      field :long, :type => Float
+      embedded_in :locatable, :inverse_of => :locations
     end
 
 !SLIDE small
@@ -48,20 +44,54 @@
 # Validations
 
     @@@ ruby
-    class Phone
+    class Location
       include Mongoid::Document
-      field :country_code, :type => Integer, :default => 1
-      field :number
+      field :lat, :type => Float
+      field :long, :type => Float
 
-      validates_format_of :number, :with => /[\d\(\)\-]*/
+      validates_presence_of :lat, :long
     end
 
-!SLIDE small
+!SLIDE smaller
 
 # Persistence
 
     @@@ ruby
-    darth = Person.create(:first_name => "Anakin", :last_name => "Skywalker")
-    darth.update_attributes(:first_name => "Darth", :last_name => "Vader")
+    grace = Person.new(:first_name => "Grace",
+                       :last_name => "Augustine")
+    grace.save
 
-    person.destroy
+    jake = Person.create(:first_name => "Jake",
+                         :last_name => "Sully")
+    jake.update_attributes(:first_name => "Toruk",
+                           :last_name => "Makto")
+
+    miles = Person.create(:first_name => "Miles",
+                          :last_name => "Quaritch")
+    miles.destroy
+
+!SLIDE small
+
+# Finders
+
+    @@@ ruby
+    Person.all(:conditions => {:first_name => "Grace"})
+
+    Person.first
+
+    Person.find_or_create_by(:first_name => "Miles")
+
+!SLIDE small
+
+# Callbacks
+
+    @@@ ruby
+    class Person
+      include Mongoid::Document
+
+      field :first_name
+      field :last_name
+
+      before_save :update_current_location
+    end
+
