@@ -9,7 +9,7 @@
 * finders
 * callbacks
 
-!SLIDE ruby
+!SLIDE
 
 # Mongoid::Document
 
@@ -22,37 +22,37 @@
       field :clearance_level, :default => 'basic'
     end
 
-!SLIDE small
+!SLIDE
 
 # Associations
 
     @@@ ruby
     class Person
       include Mongoid::Document
-      embeds_many :locations
+      embeds_many :assignments
     end
 
-    class Location
+    class Assignment
       include Mongoid::Document
-      field :lat, :type => Float
-      field :long, :type => Float
-      embedded_in :locatable, :inverse_of => :locations
+
+      embedded_in :person, :inverse_of => :assignments
     end
 
-!SLIDE small
+!SLIDE
 
 # Validations
 
     @@@ ruby
-    class Location
+    class Assignment
       include Mongoid::Document
-      field :lat, :type => Float
-      field :long, :type => Float
 
-      validates_presence_of :lat, :long
+      field :start_date, :type => Date
+      field :end_date, :type => Date
+
+      validates_presence_of :start_date
     end
 
-!SLIDE smaller
+!SLIDE
 
 # Persistence
 
@@ -70,7 +70,7 @@
                           :last_name => "Quaritch")
     miles.destroy
 
-!SLIDE small
+!SLIDE
 
 # Finders
 
@@ -81,7 +81,7 @@
 
     Person.find_or_create_by(:first_name => "Miles")
 
-!SLIDE small
+!SLIDE
 
 # Callbacks
 
