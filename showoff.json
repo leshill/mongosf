@@ -1,6 +1,5 @@
 [
   /* {"section" : "overview"}, */
   {"section" : "basics"},
-  {"section" : "caching" },
   {"section" : "extras" }
 ]
