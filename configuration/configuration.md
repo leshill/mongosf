@@ -7,7 +7,6 @@
 * Persisting type information
 * Connections
 * Configuring options
-* Master/Slave support
 
 !SLIDE
 
@@ -53,7 +52,7 @@
 
 # Connections
 
-* Works out of the box with a default install and startup
+* Works with a default install and startup
 * `localhost:27017`
 
 !SLIDE
@@ -83,30 +82,4 @@
 
     development:
       <<: *defaults
-
-!SLIDE
-
-# Master / Slave support
-
-!SLIDE
-
-# Master / Slave support
-
-## Read from Slaves per model
-
-    @@@ ruby
-    class Location
-      include Mongoid::Document
-
-      enslave
-    end
-
-!SLIDE
-
-# Master / Slave support
-
-## Read from Slaves per query
-
-    @@@ ruby
-    Location.where(:lat_long.near => [30, 30]).enslave
 

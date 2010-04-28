@@ -1,5 +1,9 @@
 [
-  /* {"section" : "overview"}, */
+  {"section" : "overview"},
   {"section" : "basics"},
-  {"section" : "extras" }
+  {"section" : "extras" },
+  {"section" : "configuration" },
+  {"section" : "master_slave" },
+  {"section" : "criteria" },
+  {"section" : "persistence" }
 ]
