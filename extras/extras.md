@@ -1,6 +1,13 @@
-!SLIDE
+!SLIDE bullets incremental
 
 # Extras
+
+* Dirty Attributes
+* Versioning
+* Timestamps
+* Keys
+* Indexes
+* Caching
 
 !SLIDE
 
