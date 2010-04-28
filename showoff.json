@@ -5,5 +5,6 @@
   {"section" : "configuration" },
   {"section" : "master_slave" },
   {"section" : "criteria" },
-  {"section" : "persistence" }
+  {"section" : "persistence" },
+  {"section" : "end" }
 ]
