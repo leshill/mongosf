@@ -1,5 +1,16 @@
+SPIKE
+
 100,000 inserts into mongodb/mongomapper 115secs; couchdb/couch_fu is 1692secs. 2 mins vs 28 mins (thx @leshill)
 
 2:15 PM Aug 12th, 2009 via Twitterrific
 Dr Nic
+
+BASICS
+
+* Document
+* Associations
+* Validations
+* Persistence
+* Finders
+* Callbacks
 

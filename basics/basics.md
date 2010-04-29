@@ -1,13 +1,24 @@
-!SLIDE incremental bullets
+!SLIDE
 
-# Basics
+# Mongoid
 
-* Document
-* Associations
-* Validations
-* Finders
-* Callbacks
-* Persistence
+    @@@ ruby
+    class Person
+      include Mongoid::Document
+
+      field :first_name
+      field :last_name
+      field :arrival_date, :type => Date
+      field :division
+      field :clearance_level, :type => Integer, :default => 0
+
+      embeds_many :assignments
+
+      scope :security_personnel, where(:division => 'security')
+    end
+
+    jake = Person.security_personnel.where(:first_name => 'Jake',
+                                           :last_name => 'Sully').first
 
 !SLIDE
 
@@ -47,10 +58,11 @@
     class Assignment
       include Mongoid::Document
 
+      field :name
       field :start_date, :type => Date
       field :end_date, :type => Date
 
-      validates_presence_of :start_date
+      validates_presence_of :name, :start_date
     end
 
 !SLIDE

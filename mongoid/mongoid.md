@@ -15,12 +15,3 @@
 * @modetojoy
 * github.com/durran/mongoid
 
-!SLIDE bullets incremental
-
-# Mongoid
-
-* Basics
-* Extras
-* Configuration
-* Criteria
-
