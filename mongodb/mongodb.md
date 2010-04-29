@@ -22,5 +22,6 @@
 
 # When not to use MongoDB?
 
-* Always use it!
+* Never? Always use it!
+* If you have relational data
 * When you must use relational queries
