@@ -19,7 +19,8 @@
       field :first_name
       field :last_name
       field :arrival_date, :type => Date
-      field :clearance_level, :default => 'basic'
+      field :division
+      field :clearance_level, :type => Integer, :default => 0
     end
 
 !SLIDE
