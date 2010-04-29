@@ -83,3 +83,29 @@
     development:
       <<: *defaults
 
+!SLIDE
+
+# Configuring options
+
+## `config/initializer/mongoid.rb`
+
+    @@@ ruby
+    Mongoid.configure do |config|
+      config.use_object_ids = false
+      config.persist_types = true
+    end
+
+!SLIDE
+
+# Configuring the logger
+
+## `config/initializer/mongoid.rb`
+
+    @@@ ruby
+    Mongoid.configure do |config|
+      old_connection = config.master.connection
+      old_db = config.master
+      config.master = Mongo::Connection.new(old_connection.host,
+        old_connection.port,
+        :logger => Rails.logger).db(old_db.name)
+    end
