@@ -13,6 +13,13 @@
 
 !SLIDE bullets incremental
 
+# MongoDB => Ruby
+
+* MongoDB
+* Mongoid
+
+!SLIDE bullets incremental
+
 # Why MongoDB?
 
 * Pharmaceutical company
@@ -54,4 +61,13 @@
 * Document-oriented
 * Queries
 * Blindingly fast
+
+!SLIDE bullets incremental
+
+# Since then
+
+* System is in production
+* Queries down to a few seconds
+* Imports down to hours
+* We now have three applications actively using MongoDB, and two that are due to start shortly
 
