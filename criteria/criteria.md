@@ -103,10 +103,10 @@ TODO
     class Location
       include Mongoid::Document
       field :name
-      field :coord, :type => Array
-      index [[:coord, Mongo::GEO2D]]
+      field :lat_long, :type => Array
+      index [[:lat_long, Mongo::GEO2D]]
     end
 
-    Location.near(:coord => [30, 30])
-    # find({:coord=>{"$near"=>[30, 30]}}, {})
+    Location.near(:lat_long => [30, 30])
+    # find({:lat_long=>{"$near"=>[30, 30]}}, {})
 
