@@ -13,13 +13,6 @@
 
 !SLIDE bullets incremental
 
-# MongoDB => Ruby
-
-* MongoDB
-* Mongoid
-
-!SLIDE bullets incremental
-
 # Why MongoDB?
 
 * Pharmaceutical company
