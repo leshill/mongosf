@@ -98,7 +98,7 @@
 
 !SLIDE
 
-# Caching
+# Caching query results
 
 !SLIDE
 
