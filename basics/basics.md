@@ -2,12 +2,12 @@
 
 # Basics
 
-* document
-* associations
-* validations
-* persistence
-* finders
-* callbacks
+* Document
+* Associations
+* Validations
+* Persistence
+* Finders
+* Callbacks
 
 !SLIDE
 
