@@ -27,6 +27,7 @@
     @@@ ruby
     class Person
       include Mongoid::Document
+
       field :first_name
       field :last_name
       field :arrival_date, :type => Date
@@ -41,6 +42,7 @@
     @@@ ruby
     class Person
       include Mongoid::Document
+
       embeds_many :assignments
     end
 
