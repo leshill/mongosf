@@ -38,21 +38,11 @@
 
 !SLIDE bullets incremental
 
-# NOSQL spike (Summer 2009)
+# Initial Spike
 
-* CouchDB
-* Document-oriented
-* Transactional
-* Map-Reduce
-
-!SLIDE bullets incremental
-
-# NOSQL spike (Summer 2009)
-
-* MongoDB
 * Document-oriented
 * Queries
-* Blindingly fast
+* Performance
 
 !SLIDE bullets incremental
 
@@ -61,5 +51,5 @@
 * System is in production
 * Queries down to a few seconds
 * Imports down to hours
-* We now have three applications actively using MongoDB, and two that are due to start shortly
+* We now have three applications actively using MongoDB, and two more starting
 
