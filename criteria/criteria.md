@@ -2,12 +2,11 @@
 
 # Criteria
 
-* Basic queries
-* `$where`
-* Sorting
-* Pagination
+* Queries
+* Sorting and Pagination
 * Limiting returned fields
 * Geo support (RENAME this)
+* Scopes
 
 !SLIDE
 
@@ -111,6 +110,3 @@ TODO
     Location.near(:coord => [30, 30])
     # find({:coord=>{"$near"=>[30, 30]}}, {})
 
-!SLIDE
-
-# Named Scopes
