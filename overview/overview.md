@@ -40,14 +40,6 @@
 
 # NOSQL spike (Summer 2009)
 
-* Cassandra
-* Broken out of the box
-* (has since been fixed)
-
-!SLIDE bullets incremental
-
-# NOSQL spike (Summer 2009)
-
 * CouchDB
 * Document-oriented
 * Transactional
