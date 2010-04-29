@@ -6,6 +6,7 @@
 
 # Les Hill
 
+* hashrocket.com
 * @leshill
 * github.com/leshill
 * blog.leshill.org
@@ -16,26 +17,15 @@
 
 ## Object-Relational impedence mismatch
 
-* Schema inheritance
-* Set vs. graph relationships
+!SLIDE bullets incremental
 
-!SLIDE
 
 # Ruby Driver
 
-!SLIDE
+!SLIDE bullets incremental
 
-# Mongoid
 
-* Object Document Mapper
-* Store Ruby objects in MongoDB
-* And query them easily
 
-!SLIDE
 
-# Mongoid
 
-* Durran Jordan
-* @modetojoy
-* github.com/durran/mongoid
 
