@@ -3,10 +3,10 @@
   {"section" : "mongodb"},
   {"section" : "mongoid"},
   {"section" : "basics"},
+  {"section" : "persistence"},
   {"section" : "extras"},
   {"section" : "configuration"},
   {"section" : "master_slave"},
   {"section" : "criteria"},
-  {"section" : "persistence"},
   {"section" : "end"}
 ]

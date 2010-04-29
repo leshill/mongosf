@@ -5,9 +5,9 @@
 * Document
 * Associations
 * Validations
-* Persistence
 * Finders
 * Callbacks
+* Persistence
 
 !SLIDE
 
@@ -54,24 +54,6 @@
 
 !SLIDE
 
-# Persistence
-
-    @@@ ruby
-    grace = Person.new(:first_name => "Grace",
-                       :last_name => "Augustine")
-    grace.save
-
-    jake = Person.create(:first_name => "Jake",
-                         :last_name => "Sully")
-    jake.update_attributes(:first_name => "Toruk",
-                           :last_name => "Makto")
-
-    miles = Person.create(:first_name => "Miles",
-                          :last_name => "Quaritch")
-    miles.destroy
-
-!SLIDE
-
 # Finders
 
     @@@ ruby
@@ -94,4 +76,22 @@
 
       before_save :update_current_location
     end
+
+!SLIDE
+
+# Persistence
+
+    @@@ ruby
+    grace = Person.new(:first_name => "Grace",
+                       :last_name => "Augustine")
+    grace.save
+
+    jake = Person.create(:first_name => "Jake",
+                         :last_name => "Sully")
+    jake.update_attributes(:first_name => "Toruk",
+                           :last_name => "Makto")
+
+    miles = Person.create(:first_name => "Miles",
+                          :last_name => "Quaritch")
+    miles.destroy
 

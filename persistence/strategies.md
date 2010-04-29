@@ -1,7 +1,3 @@
-!SLIDE
-
-# Leveraging MongoDB Atomic Updates
-
 !SLIDE small
 
 # Persistence (new document)
