@@ -35,6 +35,7 @@
 
 * Cassandra
 * Broken out of the box
+* (has since been fixed)
 
 !SLIDE bullets incremental
 

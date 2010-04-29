@@ -11,6 +11,7 @@
 # Mongoid
 
 * Durran Jordan
+* hashrocket.com
 * @modetojoy
 * github.com/durran/mongoid
 
