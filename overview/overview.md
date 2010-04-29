@@ -11,21 +11,46 @@
 * github.com/leshill
 * blog.leshill.org
 
-!SLIDE
+!SLIDE bullets incremental
 
-# How did we get here?
+# Why MongoDB?
 
-## Object-Relational impedence mismatch
+* Pharmaceutical company
+* Denormalized relational data
+* Millions of records
+* Critical queries took 4 hours to complete
+* Data imports took days
 
 !SLIDE bullets incremental
 
+# Our approach
 
-# Ruby Driver
+* Use NOSQL as primary DB
+* Distribute work
+* RDBMS for transactional support
 
 !SLIDE bullets incremental
 
+# NOSQL spike (Summer 2009)
 
+* Cassandra
+* Broken out of the box
 
+!SLIDE bullets incremental
 
+# NOSQL spike (Summer 2009)
 
+* CouchDB
+* Document-oriented
+* Transactional
+* Map-Reduce
+
+!SLIDE bullets incremental
+
+# NOSQL spike (Summer 2009)
+
+* MongoDB
+* Document-oriented
+* Queries
+* Blindingly fast
 
