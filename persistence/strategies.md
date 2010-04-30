@@ -1,192 +1,155 @@
-!SLIDE small
+!SLIDE
 
-# Persistence (new document)
-
-    @@@ ruby
-    # In Mongoid:
-    Person.create(:last_name => "Dawkins")
-
-    richard = Person.new(:last_name => "Dawkins")
-    richard.save
-
-    # MongoDB query:
-    db.people.insert({ "last_name" : "Dawkins" }, true);
-
-!SLIDE small
-
-# Persistence (new tree)
+# Inserting a new document
 
     @@@ ruby
-    # In Mongoid:
-    richard = Person.new(:last_name => "Dawkins")
-    richard.addresses.build(:street => "Upper St")
-    richard.save
+    jake = Person.new(:last_name => "Sully")
+    jake.save
 
     # MongoDB query:
-    db.people.insert(
-      {
-        "last_name" : "Dawkins",
-        "addresses" : [ { "street" : "Upper St" } ]
-      },
-      true
-    );
+    insert([{"created_at"=>Fri Apr 30 15:05:40 UTC 2010,
+      "updated_at"=>Fri Apr 30 15:05:40 UTC 2010,
+      "_id"=>"4bdaf1c42557ab099f00000b",
+      "_type"=>"Person",
+      "clearance_level"=>0,
+      "last_name"=>"Sully"}])
 
-!SLIDE small
+!SLIDE
 
-# Persistence (new embeds_one)
+# Inserting a tree of data
 
     @@@ ruby
-    # In Mongoid:
-    richard = Person.create(:last_name => "Dawkins")
-    email = Email.new(:address => "rd@dawkins.net")
-    email.save
+    jake = Person.new(:last_name => "Sully")
+    jake.assignments.build(:name => "Avatar Security")
+    jake.save
 
     # MongoDB query:
-    db.people.update(
-      { "_id" : "4baa56f1230048567300485c" },
-      { $set :
-        { "email" :
-          { "address" : "rd@dawkins.net" }
-        }
-      },
-      false,
-      true
-    );
+    insert([{"created_at"=>Fri Apr 30 15:07:14 UTC 2010,
+      "updated_at"=>Fri Apr 30 15:07:14 UTC 2010,
+      "_id"=>"4bdaf20f2557ab099f00000c",
+      "_type"=>"Person",
+      "clearance_level"=>0,
+      "last_name"=>"Sully",
+      "assignments"=>[{
+        "name"=>"Avatar Security",
+        "_id"=>"4bdaf2202557ab099f00000d",
+        "_type"=>"Assignment"}]}])
 
-!SLIDE small
+!SLIDE
 
-# Persistence (new embeds_many)
+# Embeds one
 
     @@@ ruby
-    # In Mongoid:
-    richard = Person.create(:last_name => "Dawkins")
-    address = Address.new(:street => "Upper St.")
-    richard.addresses << address
-    address.save
+    jake = Person.create(:last_name => "Sully")
+    jake.contact_info = ContactInfo.new(:number => "4348723")
+    jake.save
 
-    # MongoDB query:
-    db.people.update(
-      { "_id" : "4baa56f1230048567300485c" },
-      { $push :
-        { "addresses" :
-          { "street" : "Upper St." }
-        }
-      },
-      false,
-      true
-    );
+    # MongoDB query
+    update({"_id"=>"4bdaf2d82557ab099f00000e"},
+      {"$set"=>{
+        "contact_info"=>{
+          "handle"=>"jsully",
+          "_id"=>"4bdaf3142557ab099f00000f",
+          "_type"=>"ContactInfo"}}})
 
-!SLIDE small
+!SLIDE
 
-# Persistence (update document)
+# Embeds many
 
     @@@ ruby
-    # In Mongoid:
-    richard = Person.where(:last_name => "Dawkins").first
-    richard.first_name = "Richard"
-    richard.save
+    jake = Person.create(:last_name => "Sully")
+    assignment = Assignment.new(:name => "Avatar Security")
+    jake.assignments << assignment
+    assignment.save
 
     # MongoDB query:
-    db.people.update(
-      { "_id" : "4baa56f1230048567300485c" },
-      { $set :
-        { "first_name" : "Richard" }
-      },
-      false,
-      true
-    );
+    update({"_id"=>"4bdaf48c2557ab099f000014"},
+      {"$push"=>{
+        "assignments"=>{
+          "name"=>"Avatar Security",
+          "_id"=>"4bdaf48e2557ab099f000015",
+          "_type"=>"Assignment"}}})
 
-!SLIDE small
+!SLIDE
 
-# Persistence (update embeds_one)
+# Updating
 
     @@@ ruby
-    # In Mongoid:
-    richard = Person.where(:last_name => "Dawkins").first
-    richard.email.address = "rick@dawkins.net"
-    richard.save
+    jake = Person.where(:last_name => "Sully").first
+    jake.first_name = "Jake"
+    jake.save
 
     # MongoDB query:
-    db.people.update(
-      { "_id" : "4baa56f1230048567300485c" },
-      { $set :
-        { "email.address" : "rick@dawkins.net" }
-      },
-      false,
-      true
-    );
+    update({"_id"=>"4bdaf48c2557ab099f000014"},
+      {"$set"=>{
+        "updated_at"=>Fri Apr 30 15:20:20 UTC 2010,
+        "first_name"=>"Jake"}})
 
-!SLIDE small
+!SLIDE
 
-# Persistence (update embeds_many)
+# Updating embeds one
 
     @@@ ruby
-    # In Mongoid:
-    richard = Person.where(:last_name => "Dawkins").first
-    address = richard.addresses.first
-    address.street = "Clarkenwell Rd"
-    address.save
+    jake = Person.where(:last_name => "Sully").first
+    jake.contact_info.handle = "pandora_rox"
+    jake.save
 
     # MongoDB query:
-    db.people.update(
-      { "_id" : "4baa56f1230048567300485c" },
-      { $set :
-        { "addresses.0.street" : "Clarkenwell Rd" }
-      },
-      false,
-      true
-    );
+    update({"_id"=>"4bdaf48c2557ab099f000014",
+      "contact_info._id"=>"4bdaf5d42557ab099f000016"},
+      {"$set"=>{
+        "contact_info.handle"=>"pandora_rox"}})
 
-!SLIDE small
+!SLIDE
 
-# Persistence (delete document)
+# Updating embeds many
 
     @@@ ruby
-    # In Mongoid:
-    richard = Person.where(:last_name => "Dawkins").first
-    richard.delete # or destroy
+    jake = Person.where(:last_name => "Sully").first
+    assignment = jake.assignments.first
+    assignment.name = "Avatar Spy"
+    assignment.save
 
     # MongoDB query:
-    db.people.remove(
-      { "_id" : "4baa56f1230048567300485c" },
-      true
-    );
+    update({"_id"=>"4bdaf48c2557ab099f000014",
+      "assignments._id"=>"4bdaf48e2557ab099f000015"},
+      {"$set"=>{
+        "assignments.0.name"=>"Avatar Spy"}})
 
-!SLIDE small
+!SLIDE
 
-# Persistence (delete embeds_one)
+# Deleting
 
     @@@ ruby
-    # In Mongoid:
-    richard = Person.where(:last_name => "Dawkins").first
-    richard.email.delete
+    jake = Person.where(:last_name => "Sully").first
+    jake.destroy
 
     # MongoDB query:
-    db.people.update(
-      { "_id" : "4baa56f1230048567300485c" },
-      { $unset :
-        { "email" : true }
-      },
-      true
-    );
+    remove({:_id=>"4bd9e4622557ab0676000002"})
 
-!SLIDE small
+!SLIDE
 
-# Persistence (delete embeds_many)
+# Deleting embeds one
 
     @@@ ruby
-    # In Mongoid:
-    richard = Person.where(:last_name => "Dawkins").first
-    address = richard.addresses.first
-    address.delete
+    jake = Person.where(:last_name => "Sully").first
+    jake.contact_info.destroy
 
     # MongoDB query:
-    db.people.update(
-      { "_id" : "4baa56f1230048567300485c" },
-      { $pull :
-        { "addresses" :
-          { "_id" : "4baa56f1230048567300485d" }
-        }
-      },
-      true
-    );
+    update({"_id"=>"4bdaf48c2557ab099f000014"},
+      {"$unset"=>{
+        "contact_info"=>true}})
+!SLIDE
+
+# Deleting embeds many
+
+    @@@ ruby
+    jake = Person.where(:last_name => "Sully").first
+    assignment = jake.assignments.first
+    assignment.delete
+
+    # MongoDB query:
+    update({"_id"=>"4bdaf48c2557ab099f000014"},
+      {"$pull"=>{
+        "assignments"=>{
+        "_id"=>"4bdaf48e2557ab099f000015"}}})
