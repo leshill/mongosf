@@ -1,4 +1,4 @@
-!SLIDE bullets incremental
+!SLIDE smbullets incremental
 
 # Configuration
 
@@ -7,6 +7,7 @@
 * Persisting type information
 * Connections
 * Configuring options
+* Configuring logging
 
 !SLIDE
 
