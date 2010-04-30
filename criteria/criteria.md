@@ -5,7 +5,7 @@
 * Queries
 * Sorting and Pagination
 * Limiting returned fields
-* Geo support (RENAME this)
+* Geospatial Indexing
 * Scopes
 
 !SLIDE
@@ -70,12 +70,6 @@
 
 !SLIDE
 
-# `$where`
-
-TODO
-
-!SLIDE
-
 # Sorting
 
     @@@ ruby
@@ -106,7 +100,7 @@ TODO
 
 !SLIDE
 
-# Geo support
+# Geospatial Indexing
 
     @@@ ruby
     class Location
