@@ -4,7 +4,6 @@
 
 * Fast
 * Schemaless and Document-Oriented
-* Indexes
 * Query capabilities
 * Scaling
 * Fast!
