@@ -5,6 +5,9 @@ SPIKE
 2:15 PM Aug 12th, 2009 via Twitterrific
 Dr Nic
 
+Average Document Size: 250K
+Critical Query? now takes less than second
+
 BASICS
 
 * Document
@@ -13,4 +16,5 @@ BASICS
 * Persistence
 * Finders
 * Callbacks
+
 
