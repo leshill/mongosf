@@ -9,6 +9,5 @@
   {"section" : "master_slave"},
   {"section" : "criteria"},
   {"section" : "named_scopes"},
-  {"section" : "persistence"},
   {"section" : "end"}
 ]
