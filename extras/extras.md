@@ -1,4 +1,4 @@
-!SLIDE bullets incremental
+!SLIDE smbullets incremental
 
 # Extras
 
@@ -8,6 +8,7 @@
 * Keys
 * Indexes
 * Caching
+* Related
 
 !SLIDE
 
@@ -118,3 +119,6 @@
     @@@ ruby
     Person.where(:first_name => "Grace").cache
 
+!SLIDE
+
+# Has Many Related TODO
