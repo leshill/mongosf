@@ -3,8 +3,7 @@
 # Criteria
 
 * Queries
-* Sorting and Pagination
-* Limiting returned fields
+* Sorting, Pagination, Limiting Data
 * Geospatial Indexing
 * Scopes
 
