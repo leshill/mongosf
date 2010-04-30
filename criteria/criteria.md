@@ -14,7 +14,9 @@
 
     @@@ ruby
     Person.criteria.id("4bd9f19f2557ab0676000003").first
-    # find({:_id=>"4bd9f19f2557ab0676000003"}, {}).limit(-1)
+
+    # MongoDB query:
+    find({:_id=>"4bd9f19f2557ab0676000003"}, {}).limit(-1)
 
 !SLIDE
 
@@ -22,16 +24,9 @@
 
     @@@ ruby
     Person.where(:clearance_level.gt => 3).entries
-    # find({:clearance_level=>{"$gt"=>3}}, {})
 
-!SLIDE bullets incremental
-
-# MongoDB operators
-
-* `$all`
-* `$in`
-* `$ne`
-* `$nin`
+    # MongoDB query:
+    find({:clearance_level=>{"$gt"=>3}}, {})
 
 !SLIDE
 
@@ -39,7 +34,9 @@
 
     @@@ ruby
     Person.all_in(:first_name => ['Grace', 'Jake']).entries
-    # find({:first_name=>{"$all"=>["Grace", "Jake"]}}, {})
+
+    # MongoDB query:
+    find({:first_name=>{"$all"=>["Grace", "Jake"]}}, {})
 
 !SLIDE
 
@@ -47,7 +44,9 @@
 
     @@@ ruby
     Person.any_in(:first_name => ['Grace', 'Jake']).entries
-    # find({:first_name=>{"$in"=>["Grace", "Jake"]}}, {})
+
+    # MongoDB query:
+    find({:first_name=>{"$in"=>["Grace", "Jake"]}}, {})
 
 !SLIDE
 
@@ -55,7 +54,9 @@
 
     @@@ ruby
     Person.excludes(:first_name => 'Grace').entries
-    # find({:first_name=>{"$ne"=>"Grace"}}, {})
+
+    # MongoDB query:
+    find({:first_name=>{"$ne"=>"Grace"}}, {})
 
 !SLIDE
 
@@ -63,7 +64,9 @@
 
     @@@ ruby
     Person.not_in(:first_name => 'Jake').entries
-    # find({:first_name=>{"$nin"=>["Jake"]}}, {})
+
+    # MongoDB query:
+    find({:first_name=>{"$nin"=>["Jake"]}}, {})
 
 !SLIDE
 
@@ -77,7 +80,9 @@ TODO
 
     @@@ ruby
     Person.order_by([:last_name, :asc]).entries
-    # find({}, {}).sort([:last_name, :asc])
+
+    # MongoDB query:
+    find({}, {}).sort([:last_name, :asc])
 
 !SLIDE
 
@@ -85,7 +90,9 @@ TODO
 
     @@@ ruby
     Person.skip(10).limit(10).entries
-    # find({}, {}).skip(10).limit(10)
+
+    # MongoDB query:
+    find({}, {}).skip(10).limit(10)
 
 !SLIDE
 
@@ -93,7 +100,9 @@ TODO
 
     @@@ ruby
     Person.only(:first_name, :last_name).entries
-    # find({}, {:_type=>1, :last_name=>1, :first_name=>1})
+
+    # MongoDB query:
+    find({}, {:_type=>1, :last_name=>1, :first_name=>1})
 
 !SLIDE
 
@@ -108,5 +117,7 @@ TODO
     end
 
     Location.near(:lat_long => [30, 30])
-    # find({:lat_long=>{"$near"=>[30, 30]}}, {})
+
+    # MongoDB query:
+    find({:lat_long=>{"$near"=>[30, 30]}}, {})
 

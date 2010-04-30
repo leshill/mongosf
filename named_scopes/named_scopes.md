@@ -8,7 +8,9 @@
     end
 
     Person.security_personnel.entries
-    # find({:division=>"security"}, {})
+
+    # MongoDB query:
+    find({:division=>"security"}, {})
 
 !SLIDE
 
@@ -22,7 +24,9 @@
     end
 
     Person.cleared_for(2).entries
-    # find({:clearance_level=>{"$gte"=>2}}, {})
+
+    # MongoDB query:
+    find({:clearance_level=>{"$gte"=>2}}, {})
 
 !SLIDE
 
@@ -30,7 +34,11 @@
 
     @@@ ruby
     Person.security_personnel.cleared_for(1).entries
-    # find({:clearance_level=>{"$gte"=>1}, :division=>"security"}, {})
+
+    # MongoDB query:
+    find({:clearance_level=>{"$gte"=>1}, :division=>"security"}, {})
 
     Person.security_personnel.where(:first_name => 'Jake').entries
-    # find({:division=>"security", :first_name=>"Jake"}, {})
+
+    # MongoDB query:
+    find({:division=>"security", :first_name=>"Jake"}, {})
